@@ -31,7 +31,7 @@ export default class Price extends Component<any, any> {
           <TouchableOpacity style={{ height: 80,  margin: 'auto' }}>
             <Button
               title="Next"
-              onPress={() => this.props.navigation.navigate('RestaurantPicker2')}
+              onPress={() => this.props.navigation.navigate('RestaurantPicker')}
             />
           </TouchableOpacity>
         </View>

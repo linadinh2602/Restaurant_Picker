@@ -19,78 +19,20 @@ export interface Restaurant {
 export default class RestaurantPicker extends Component<any, any> {
   render() {
     const overlayProps = {
-      bottom: {
-      element: <Text>BLEAH</Text>,
-      title: 'BLEAH',
-        style: {
-          label: {
-            backgroundColor: 'black',
-            borderColor: 'black',
-            color: 'white',
-            borderWidth: 1
-          },
-          wrapper: {
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }
-        }
-      },
       left: {
-      element: <Text>NOPE</Text>,
-      title: 'NOPE',
-        style: {
-          label: {
-            backgroundColor: 'black',
-            borderColor: 'black',
-            color: 'white',
-            borderWidth: 1
-          },
-          wrapper: {
-            flexDirection: 'column',
-            alignItems: 'flex-end',
-            justifyContent: 'flex-start',
-            marginTop: 30,
-            marginLeft: -30
-          }
-        }
+        element:
+        <View style={styles.overlayContainerRight}>
+          <Text style={{color: 'red', fontSize: 42, fontWeight: 'bold'}}>NOPE</Text>
+        </View>,
+        title: 'NOPE',
       },
       right: {
-      element: <Text>LIKE</Text>,
-      title: 'LIKE',
-        style: {
-          label: {
-            backgroundColor: 'black',
-            borderColor: 'black',
-            color: 'white',
-            borderWidth: 1
-          },
-          wrapper: {
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            justifyContent: 'flex-start',
-            marginTop: 30,
-            marginLeft: 30
-          }
-        }
+        element: 
+        <View style={styles.overlayContainerLeft}>
+          <Text style={{color: 'green', fontSize: 42, fontWeight: 'bold'}}>LIKE</Text>
+        </View>,
+        title: 'LIKE',
       },
-      top: {
-      element: <Text>SUPER</Text>,
-      title: 'SUPER LIKE',
-        style: {
-          label: {
-            backgroundColor: 'black',
-            borderColor: 'black',
-            color: 'white',
-            borderWidth: 1
-          },
-          wrapper: {
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }
-        }
-      }
     }
 
     const overlayStyle = {
@@ -99,6 +41,15 @@ export default class RestaurantPicker extends Component<any, any> {
       borderRadius: 10,
       padding: 10,
       overflow: 'hidden'
+    }
+
+    const overlayWrapperStyle = {
+      position: 'absolute',
+      backgroundColor: 'transparent',
+      zIndex: 2,
+      flex: 1,
+      width: '100%',
+      height: '100%'
     }
 
 
@@ -110,6 +61,9 @@ export default class RestaurantPicker extends Component<any, any> {
             renderCard={(card) => {
               return (
                 <View style={styles.card}>
+                  <View style={styles.overlayContainer}>
+                    <Text style={styles.overlayName}>{card.name}</Text>
+                  </View>
                   <Image
                     style={styles.cardImage}
                     source={{uri: card.image}}
@@ -122,8 +76,9 @@ export default class RestaurantPicker extends Component<any, any> {
             onSwipedAll={() => { console.log('onSwipedAll') }}
             cardIndex={0}
             backgroundColor={colors.background}
-            overlayLabel={overlayProps}
-            overlayStyle={overlayStyle}
+            overlayLabels={overlayProps}
+            overlayLabelStyle={overlayStyle}
+            overlayLabelWrapperStyle={overlayWrapperStyle}
             stackSize={3}>
           </Swiper>
           <View style={{height: 120 }}/>
@@ -142,6 +97,37 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     justifyContent: "center",
+  },
+  overlayName: {
+    color: 'white',
+    fontSize: 34
+  },
+  overlayContainer: {
+    position: 'absolute',
+    zIndex: 10,
+    top: 20, 
+    left: 0, 
+    right: 0, 
+    bottom: 0, 
+    alignItems: 'center'
+  },
+  overlayContainerLeft: {
+    position: 'absolute',
+    zIndex: 10,
+    top: 0,
+    left: -120, 
+    right: 0, 
+    bottom: 0,
+    justifyContent: 'center'
+  },
+  overlayContainerRight: {
+    position: 'absolute',
+    zIndex: 10,
+    top: 0,
+    left: 220, 
+    right: 0, 
+    bottom: 0,
+    justifyContent: 'center'
   },
   text: {
     textAlign: "center",

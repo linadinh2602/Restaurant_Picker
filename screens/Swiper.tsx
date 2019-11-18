@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, StatusBar, Image, Animated, PanResponder, PanResponderGestureState } from 'react-native';
+import RestaurantCard, { Restaurant } from './RestaurantCard';
 
 /*
   Reuse from https://github.com/instamobile/tinder-react-native
@@ -9,14 +10,6 @@ import { StyleSheet, Text, View, Dimensions, StatusBar, Image, Animated, PanResp
 const SCREEN_HEIGHT = Dimensions.get('window').height - 100 // for some reasons the height is incorrect
 const SCREEN_WIDTH = Dimensions.get('window').width
 // import Icon from 'react-native-vector-icons/Ionicons'
-
-export interface Restaurant {
-  id: string,
-  name: string,
-  image: string,
-  priceRange: number,
-  rating: number,
-}
 
 export interface SwiperProps {
   cards: Restaurant[],
@@ -126,7 +119,7 @@ export default class Swiper extends React.Component<SwiperProps, any> {
     return this.props.cards.map((item, i) => {
 
       if (i < this.state.currentIndex) {
-        this.props.onSwipedAll && this.props.onSwipedAll()
+        // this.props.onSwipedAll && this.props.onSwipedAll()
         return null
       }
       else if (i == this.state.currentIndex) {
@@ -144,10 +137,10 @@ export default class Swiper extends React.Component<SwiperProps, any> {
               <Text style={{ borderWidth: 1, borderColor: 'red', color: 'red', fontSize: 32, fontWeight: '800', padding: 10 }}>NOPE</Text>
 
             </Animated.View>
-
-            <Image
+            <RestaurantCard restaurant={item} />
+            {/* <Image
               style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }}
-              source={{uri: item.image}} />
+              source={{uri: item.image}} /> */}
 
           </Animated.View>
         )
@@ -171,9 +164,10 @@ export default class Swiper extends React.Component<SwiperProps, any> {
 
             </Animated.View>
 
-            <Image
+            <RestaurantCard restaurant={item} />
+            {/* <Image
               style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }}
-              source={{uri: item.image}} />
+              source={{uri: item.image}} /> */}
 
           </Animated.View>
         )

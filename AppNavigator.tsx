@@ -5,8 +5,9 @@ import Home from './screens/Home';
 import Location from './screens/Location';
 import Cusine from './screens/Cuisine';
 import Price from './screens/Price';
-import RestaurantPicker2 from './screens/RestaurantPicker2'
-import RestaurantPicker from './screens/RestaurantPicker'
+import RestaurantPicker from './screens/RestaurantPicker';
+import RestaurantDetails from './screens/RestaurantDetails';
+
 
 
 const AppNavigator = createStackNavigator({
@@ -14,8 +15,8 @@ const AppNavigator = createStackNavigator({
   Location: { screen: Location},
   Cusine: { screen: Cusine},
   Price: { screen: Price},
-  RestaurantPicker2: {screen: RestaurantPicker2},
-  RestaurantPicker: {screen: RestaurantPicker}
+  RestaurantPicker: {screen: RestaurantPicker},
+  RestaurantDetails: {screen: RestaurantDetails}
 });
 
 const App = createAppContainer(AppNavigator);

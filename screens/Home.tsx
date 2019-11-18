@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, Alert, } from 'react-native';
+import { StyleSheet, Button, View, SafeAreaView, } from 'react-native';
 import Constants from 'expo-constants';
 
 function Separator() {
@@ -18,7 +18,7 @@ export default class Home extends Component<any, any> {
           <Separator />
           <Button
             title="Login with Google"
-            onPress={() => {}}
+            onPress={() => this.props.navigation.navigate('RestaurantDetails')}
           />
         </View>
       </SafeAreaView>

@@ -30,9 +30,8 @@ const FakeRes: Restaurant[] = [
 
 ]
 
-export default class RestaurantPicker2 extends Component<any, any> {
+export default class RestaurantPicker extends Component<any, any> {
   render() {
-    console.log('WHAT IS UP')
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
