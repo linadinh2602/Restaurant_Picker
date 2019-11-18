@@ -1,6 +1,5 @@
-import { Restaurant } from './RestaurantCard'
 
-export const restaurants: Restaurant[] = [
+export const restaurants = [
   {
     id: '1',
     name: 'Restaurant 1',

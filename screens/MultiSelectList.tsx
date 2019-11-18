@@ -9,6 +9,10 @@ import {
 import Constants from 'expo-constants';
 import { colors } from './constants';
 
+/*
+  reuse from facebook example: https://facebook.github.io/react-native/docs/flatlist
+*/
+
 function Item({ data, selected, onSelect }) {
   return (
     <SafeAreaView>
@@ -36,12 +40,18 @@ export interface MultiSelectListProps {
 }
 
 export default function MultiSelectList(props: MultiSelectListProps) {
-  // initiliate state with selected as a Map
+  // react hook https://reactjs.org/docs/hooks-state.html
   const [selected, setSelected] = React.useState({});
 
   const onSelect = (item: ItemType) => {
     const newSelected = {...selected};
-    newSelected[item.id] = item;
+    
+    if (!(item.id in selected)) {
+      newSelected[item.id] = item;
+    }
+    else {
+      delete newSelected[item.id]
+    }
 
     setSelected(newSelected);
     props.onSelectedItemsChanged(Object.values(newSelected));
